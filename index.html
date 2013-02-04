@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link rel="icon" type="image/png" href="favicon.ico" />
+
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>Spark - A small web framework for Java</title>
+</head>
+
+<body>
+
+	<div id="page">
+		<div class="topNaviagationLink">
+			<a href="index.html">Home</a>
+		</div>
+		<div class="topNaviagationLink">
+			<a href="why.html">Why?</a>
+		</div>
+		<div class="topNaviagationLink">
+			<a href="readme.html">Readme</a>
+		</div>
+		<div class="topNaviagationLink">
+			<a href="download.html">Download</a>
+		</div>
+		<div class="topNaviagationLink">
+			<a href="https://github.com/perwendel/spark">Source</a>
+		</div>
+		<div class="topNaviagationLink">
+			<a href="contact.html">Contact</a>
+		</div>
+	</div>
+
+	<div id="mainPicture">
+		<center>
+
+			<div class="picture"></div>
+
+		</center>
+	</div>
+
+	<div class="contentBox">
+		<div class="innerBox">
+			<div class="contentTitle">A Sinatra inspired micro web
+				framework for quickly creating web applications in Java with minimal effort</div>
+			<div class="contentText">
+				<div class="getting_started">
+				<h1 class="getting_started_head">Quick start</h1>
+				<div class="normal_text"><a href="download.html">Download</a> the spark lib and its dependencies (Or just add as maven dependency). Put in your classpath and you're ready to go.</div>
+				<pre>
+            <code>
+import static spark.Spark.*;
+import spark.*;
+
+public class HelloWorld {
+
+   public static void main(String[] args) {
+      
+      get(new Route("/hello") {
+         @Override
+         public Object handle(Request request, Response response) {
+            return "Hello World!";
+         }
+      });
+
+   }
+
+}
+</code>
+</pre>
+
+<h1 class="getting_started_head">Ignite and view at:</h1>
+<pre><code>http://localhost:4567/hello</code></pre>
+
+				</div>
+				<br />
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<a
+			href="http://se.linkedin.com/pub/per-wendel-f-k-a-karlsson/2/5b1/588">
+			| Founded</a> by <a
+			href="http://se.linkedin.com/pub/per-wendel-f-k-a-karlsson/2/5b1/588">Per
+			Wendel</a> |
+		<a
+            href="http://hwgrafik.se/">
+            | Logo design</a> by <a
+            href="http://hwgrafik.se/">HW Grafik</a> |
+	</div>
+</body>
+</html>
