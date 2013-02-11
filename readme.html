@@ -184,6 +184,8 @@ In the handle method request information and functionality is provided by the re
  request.ip();                 // client IP address
  request.pathInfo();           // the path info
  request.port();               // the server port
+ request.queryMap();           // the query map
+ request.queryMap("foo");      // the query map for a certain parameter
  request.queryParams("FOO");   // value of FOO query param
  request.queryParams();        // the query param list
  request.raw();                // raw request handed in by Jetty
@@ -192,6 +194,18 @@ In the handle method request information and functionality is provided by the re
  request.url();                // "http://example.com/foo"
  request.userAgent();          // user agent
  ....
+</code></pre>
+
+<h2 class="getting_started_head">Query maps</h2>
+<div class="normal">
+Query maps allows you to group parameters to a map by their prefix. This allows you to group two parameters like <i>user[name]</i> and <i>user[age]</i> to a <i>user</i> map.
+</div>
+
+<pre><code>
+request.queryMap().get("user", "name").value();
+request.queryMap().get("user").get("name").value();
+request.queryMap("user").get("age").integerValue();
+request.queryMap("user").toMap();
 </code></pre>
 
 <h1 class="getting_started_head">Response</h1>
