@@ -189,6 +189,7 @@ In the handle method request information and functionality is provided by the re
  request.raw();                // raw request handed in by Jetty
  request.requestMethod();      // The HTTP method (GET, ..etc)
  request.scheme();             // "http"
+ request.session();            // session management
  request.url();                // "http://example.com/foo"
  request.userAgent();          // user agent
  ....
@@ -207,6 +208,24 @@ In the handle method response information and functionality is provided by the r
  response.redirect("/example"); // browser redirect to /example
  response.status(401);          // set status code to 401
  response.type("text/xml");     // set content type to text/xml
+ ....
+</code></pre>
+
+<h1 class="getting_started_head">Session management</h1>
+<div class="normal">
+
+</div>
+
+<pre><code>
+ ....
+ request.session(true)                            // create (if not created) and return session
+ request.session().attribute("user")              // Get session attribute 'user'
+ request.session().attribute("user", "foo")       // Set session attribute 'user'
+ request.session().removeAttribute("user", "foo") // Remove session attribute 'user'
+ request.session().attributes()                   // Get all session attributes
+ request.session().id()                           // Get session id
+ request.session().isNew()                        // Check is session is new
+ request.session().raw()                          // Return servlet object
  ....
 </code></pre>
 
