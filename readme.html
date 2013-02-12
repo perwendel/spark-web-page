@@ -173,6 +173,7 @@ In the handle method request information and functionality is provided by the re
 <pre><code>
  ....
  request.body();               // request body sent by the client
+ request.cookies();            // request cookies sent by the client
  request.contentLength();      // length of request body
  request.contentType();        // content type of request.body
  request.headers();            // the HTTP header list
@@ -221,6 +222,22 @@ In the handle method response information and functionality is provided by the r
  response.redirect("/example"); // browser redirect to /example
  response.status(401);          // set status code to 401
  response.type("text/xml");     // set content type to text/xml
+ ....
+</code></pre>
+
+<h1 class="getting_started_head">Cookies</h1>
+<div class="normal">
+Handling cookies can be done via spark request and response objects.
+</div>
+
+<pre><code>
+ ....
+ request.cookies();     // get map of all request cookies 
+ request.cookie("foo"); // access request cookie by name
+ ....
+ response.cookie("foo", "bar");       // set cookie with a value
+ response.cookie("foo", "bar", 3600); // set cookie with a max-age
+ response.removeCookie("foo");        // remove cookie
  ....
 </code></pre>
 
