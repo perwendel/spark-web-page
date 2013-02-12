@@ -186,18 +186,19 @@ In the handle method request information and functionality is provided by the re
  request.pathInfo();           // the path info
  request.port();               // the server port
  request.queryMap();           // the query map
- request.queryMap("foo");      // the query map for a certain parameter
+ request.queryMap("foo");      // query map for a certain parameter
  request.queryParams("FOO");   // value of FOO query param
  request.queryParams();        // the query param list
  request.raw();                // raw request handed in by Jetty
  request.requestMethod();      // The HTTP method (GET, ..etc)
  request.scheme();             // "http"
+ request.session();            // session management
  request.url();                // "http://example.com/foo"
  request.userAgent();          // user agent
  ....
 </code></pre>
 
-<h2 class="getting_started_head">Query maps</h2>
+<h1 class="getting_started_head">Query maps</h1>
 <div class="normal">
 Query maps allows you to group parameters to a map by their prefix. This allows you to group two parameters like <i>user[name]</i> and <i>user[age]</i> to a <i>user</i> map.
 </div>
@@ -234,10 +235,27 @@ Handling cookies can be done via spark request and response objects.
  ....
  request.cookies();     // get map of all request cookies 
  request.cookie("foo"); // access request cookie by name
- ....
  response.cookie("foo", "bar");       // set cookie with a value
  response.cookie("foo", "bar", 3600); // set cookie with a max-age
  response.removeCookie("foo");        // remove cookie
+ ....
+</code></pre>
+
+<h1 class="getting_started_head">Session management</h1>
+<div class="normal">
+Every request has access to the session created on the server side, provided with the following methods:
+</div>
+
+<pre class="session"><code>
+ ....
+ request.session(true)                            // create (if not created) and return session
+ request.session().attribute("user")              // Get session attribute 'user'
+ request.session().attribute("user", "foo")       // Set session attribute 'user'
+ request.session().removeAttribute("user", "foo") // Remove session attribute 'user'
+ request.session().attributes()                   // Get all session attributes
+ request.session().id()                           // Get session id
+ request.session().isNew()                        // Check is session is new
+ request.session().raw()                          // Return servlet object
  ....
 </code></pre>
 

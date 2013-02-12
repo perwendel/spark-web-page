@@ -58,7 +58,7 @@ body {
 	font-family: "lucida console", "monaco", "andale mono",
 		"bitstream vera sans mono", "consolas", monospace;
 	font-size: 15px;
-	height: 240px;
+	height: 280px;
 	margin-left: 15px;
 	margin-top: 20px;
 	padding: 10px;
@@ -219,6 +219,10 @@ body {
 
 .normal a:hover {
 	color: black;
+}
+
+.session {
+   width: 862px;
 }
 
 .readme_text {
