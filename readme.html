@@ -251,8 +251,10 @@ Handling cookies can be done via spark request and response objects.
  ....
  request.cookies();     // get map of all request cookies 
  request.cookie("foo"); // access request cookie by name
+ ....
  response.cookie("foo", "bar");       // set cookie with a value
  response.cookie("foo", "bar", 3600); // set cookie with a max-age
+ response.cookie("foo", "bar", 3600, true); // secure cookie
  response.removeCookie("foo");        // remove cookie
  ....
 </code></pre>
@@ -365,6 +367,14 @@ You can trigger a browser redirect with the redirect helper method:
 
 <pre><code>
  response.redirect("/bar");
+</code></pre>
+<br/>
+<div class="normal">
+You can also trigger a browser redirect with specific http 3XX status code: 
+</div>
+
+<pre><code>
+ response.redirect("/bar", 301); // moved permanetely
 </code></pre>
 
 <h1 class="getting_started_head">Port</h1>
