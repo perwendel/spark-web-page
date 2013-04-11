@@ -377,6 +377,28 @@ You can also trigger a browser redirect with specific http 3XX status code:
  response.redirect("/bar", 301); // moved permanetely
 </code></pre>
 
+<h1 class="getting_started_head">Static files</h1>
+<div class="normal">
+Assign a folder in the classpath serving static files with the staticFileLocation method.
+</div>
+
+<pre><code>
+ staticFileLocation("/public"); // Static files 
+</code></pre>
+
+<div class="normal">
+Note that the public directory name is not included in the URL. 
+A file /public/css/style.css is made available as http://&lt;host&gt;:&lt;port&gt;/css/style.css
+</div>
+<br/>
+<div class="normal">
+You can also assign an external folder (not in the classpath) serving static files with the externalStaticFileLocation method.
+</div>
+
+<pre><code>
+ externalStaticFileLocation("/var/www/public"); // Static files 
+</code></pre>
+
 <h1 class="getting_started_head">Port</h1>
 <div class="normal">
 By default, Spark runs on port 4567. If you want to set another port use setPort.
