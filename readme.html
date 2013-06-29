@@ -439,6 +439,16 @@ and how it is used (MyMessage is a bean with one member 'message'):
 
 </code></pre>
 
+<h1 class="getting_started_head">Views / Templates - TemplateViewRoute </h1>
+<div class="normal">
+A TemplateViewRoute is built up by a path (for url-matching) and the implementation of the 'render' method.
+Instead of returning the result of calling toString() as body the TemplateViewRoute returns the result of calling render method.
+<br/><br/>
+The primary purpose of this kind of Route is to provide a way to create generic and reusable components for rendering output using a Template Engine. 
+<br/><br/>
+A source code example on howto render objects to HTML using Freemarker template engine can be found 
+<a href="https://github.com/perwendel/spark/tree/master/src/test/java/spark/examples/templateview">here</a>.</div>
+
 <h1 class="getting_started_head">Port</h1>
 <div class="normal">
 By default, Spark runs on port 4567. If you want to set another port use setPort.
