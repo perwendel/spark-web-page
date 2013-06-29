@@ -399,6 +399,47 @@ You can also assign an external folder (not in the classpath) serving static fil
  externalStaticFileLocation("/var/www/public"); // Static files 
 </code></pre>
 
+<h1 class="getting_started_head">ResponseTransformerRoute</h1>
+<div class="normal">
+Routes that transforms the output from the handle method. This is done by extending the ResponseTransformerRoute.
+<br/>
+<br/>
+Example Of a ResponseTransformerRoute transforming output to JSON using Gson:
+</div>
+
+<pre class="transform"><code>
+ import com.google.gson.Gson;
+
+ public abstract class JsonTransformerRoute extends ResponseTransformerRoute {
+
+    private Gson gson = new Gson();
+	
+    protected JsonTransformer(String path) {
+       super(path, "application/json");
+    }
+	
+    @Override
+    public String render(Object model) {
+	   return gson.toJson(model);
+    }
+  
+ }
+ </code></pre>
+ 
+ <br/>
+<div class="normal">
+and how it is used (MyMessage is a bean with one member 'message'):
+</div>
+ <pre><code>
+ get(new JsonTransformer("/hello") {
+    @Override
+    public Object handle(Request request, Response response) {
+       return new MyMessage("Hello World");
+    }
+ });
+
+</code></pre>
+
 <h1 class="getting_started_head">Port</h1>
 <div class="normal">
 By default, Spark runs on port 4567. If you want to set another port use setPort.

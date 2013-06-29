@@ -225,6 +225,10 @@ body {
    width: 862px;
 }
 
+.transform {
+   width: 720px;
+}
+
 .readme_text {
 	font-family: "lucida console", "monaco", "andale mono",
 		"bitstream vera sans mono", "consolas", monospace;
