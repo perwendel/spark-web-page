@@ -58,7 +58,7 @@ body {
 	font-family: "lucida console", "monaco", "andale mono",
 		"bitstream vera sans mono", "consolas", monospace;
 	font-size: 15px;
-	height: 340px;
+	height: 375px;
 	margin-left: 15px;
 	margin-top: 20px;
 	padding: 10px;
@@ -207,6 +207,10 @@ body {
 .getting_started_head {
 	padding-bottom: 10px;
 	padding-top: 24px;
+}
+
+.getting_started_head_inner {
+	font-size: 20px;
 }
 
 .getting_started_head_loads {
