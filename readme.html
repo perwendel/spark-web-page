@@ -383,6 +383,28 @@ You can also trigger a browser redirect with specific http 3XX status code:
  response.redirect("/bar", 301); // moved permanently
 </code></pre>
 
+<h1 class="getting_started_head">Exception Mapping</h1>
+<div class="normal">
+To handle exceptions of a configured type for all routes and filters: 
+</div>
+
+<div class="transform">
+<pre><code>
+ get(new Route("/throwexception") {
+    public Object handle(Request request, Response response) {
+       throw new NotFoundException();
+    }
+ });
+
+ exception(new ExceptionHandler(NotFoundException.class) {
+    public void handle(Exception e, Request request, Response response) {
+       response.status(404);
+       response.body("Resource not found");
+    }
+ });
+ </code></pre>
+ </div>
+
 <h1 class="getting_started_head">Static files</h1>
 <div class="normal">
 Assign a folder in the classpath serving static files with the staticFileLocation method.
