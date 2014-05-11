@@ -78,13 +78,10 @@ public class HelloWorld {
 
    public static void main(String[] args) {
       
-      get(new Route("/hello") {
-         @Override
-         public Object handle(Request request, Response response) {
-            return "Hello World!";
-         }
-      });
-
+      get("/hello",(request, response) -> {
+         return "Hello World!";
+      };
+      
    }
 
 }
@@ -113,39 +110,24 @@ NOTE! Routes are matched in the order they are defined. The first route that mat
 
  ....
       
- get(new Route("/") {
-    @Override
-    public Object handle(Request request, Response response) {
-       // .. Show something ..
-    }
+ get("/", (request, response) -> {
+    // .. Show something ..
  });
        
- post(new Route("/") {
-    @Override
-    public Object handle(Request request, Response response) {
-       // .. Create something .. 
-    }
+ post("/", (request, response) -> {
+    // .. Create something .. 
  });
        
- put(new Route("/") {
-    @Override
-    public Object handle(Request request, Response response) {
-       // .. Update something ..
-    }
+ put("/", (request, response) -> {
+    // .. Update something ..
  });
        
- delete(new Route("/") {
-    @Override
-    public Object handle(Request request, Response response) {
-       // .. annihilate something ..
-    }
+ delete("/", (request, response) -> {
+    // .. annihilate something ..
  });
        
- options(new Route("/") {
-    @Override
-    public Object handle(Request request, Response response) {
-       // .. appease something ..
-    }
+ options("/", (request, response) -> {
+    // .. appease something ..
  });
        
  ....
@@ -157,11 +139,8 @@ the request object:</div>
 <pre><code>
  // matches "GET /hello/foo" and "GET /hello/bar"
  // request.params(":name") is 'foo' or 'bar'
- get(new Route("/hello/:name") {
-    @Override
-    public Object handle(Request request, Response response) {
-       return "Hello: " + request.params(":name");
-    }
+ get("/hello/:name", (request, response) -> {
+    return "Hello: " + request.params(":name");
  });       
 </pre></code>
 
@@ -171,11 +150,8 @@ method on the request object:</div>
 <pre><code>
  // matches "GET /say/hello/to/world"
  // request.splat()[0] is 'hello' and request.splat()[1] 'world'
- get(new Route("/say/*/to/*") {
-    @Override
-    public Object handle(Request request, Response response) {
+ get("/say/*/to/*", (request, response) -> {
        return "Nbr of splat parameters: " + request.splat().length;
-    }
  });       
 </pre></code>
 
@@ -326,14 +302,11 @@ To stop execution, use halt:
 </div>
 
 <pre><code>
- before(new Filter() { // matches all routes
-    @Override
-    public void handle(Request request, Response response) {
-    	boolean authenticated;
-    	// ... check if authenticated
-    	if (!authenticated) {
-            halt(401, "You are not welcome here");
-    	}
+ before((request, response) -> {
+    boolean authenticated;
+    // ... check if authenticated
+    if (!authenticated) {
+       halt(401, "You are not welcome here");
     }
  });
 </code></pre>
@@ -344,11 +317,8 @@ After filters are evaluated after each request and can read the request and read
 </div>
 
 <pre><code>
- after(new Filter() {
-    @Override
-    public void handle(Request request, Response response) {
-    	response.header("foo", "set by after filter");
-    }
+ after((request, response) -> {
+    response.header("foo", "set by after filter");
  });
 </code></pre>
 <br/>
@@ -357,12 +327,9 @@ Filters optionally take a pattern, causing them to be evaluated only if the requ
 </div>
 
 <pre><code>
- before(new Filter("/protected/*") {
-    @Override
-    public void handle(Request request, Response response) {
-       // ... check if authenticated
-       halt(401, "Go Away!");
-    }
+ before("/protected/*", (request, response) -> {
+    // ... check if authenticated
+    halt(401, "Go Away!");
  });
 </code></pre>
 
@@ -390,17 +357,13 @@ To handle exceptions of a configured type for all routes and filters:
 
 <div class="transform">
 <pre><code>
- get(new Route("/throwexception") {
-    public Object handle(Request request, Response response) {
-       throw new NotFoundException();
-    }
+ get("/throwexception", (request, response) -> {
+    throw new NotFoundException();
  });
 
- exception(new ExceptionHandler(NotFoundException.class) {
-    public void handle(Exception e, Request request, Response response) {
-       response.status(404);
-       response.body("Resource not found");
-    }
+ exception(NotFoundException.class, (e, request, response) -> {
+    response.status(404);
+    response.body("Resource not found");
  });
  </code></pre>
  </div>
@@ -427,27 +390,23 @@ You can also assign an external folder (not in the classpath) serving static fil
  externalStaticFileLocation("/var/www/public"); // Static files 
 </code></pre>
 
-<h1 class="getting_started_head">ResponseTransformerRoute</h1>
+<h1 class="getting_started_head">ResponseTransformer</h1>
 <div class="normal">
-Routes that transforms the output from the handle method. This is done by extending the ResponseTransformerRoute.
+Mapped routes that transforms the output from the handle method. This is done by extending the ResponseTransformer and pass this to the mapping method.
 <br/>
-Example Of a ResponseTransformerRoute transforming output to JSON using Gson:
+Example Of a route transforming output to JSON using Gson:
 </div>
 
 <pre class="transform"><code>
  import com.google.gson.Gson;
 
- public abstract class JsonTransformerRoute extends ResponseTransformerRoute {
+ public class JsonTransformer implements ResponseTransformer {
 
     private Gson gson = new Gson();
 	
-    protected JsonTransformer(String path) {
-       super(path, "application/json");
-    }
-	
     @Override
     public String render(Object model) {
-	   return gson.toJson(model);
+       return gson.toJson(model);
     }
   
  }
@@ -458,22 +417,21 @@ Example Of a ResponseTransformerRoute transforming output to JSON using Gson:
 and how it is used (MyMessage is a bean with one member 'message'):
 </div>
  <pre><code>
- get(new JsonTransformer("/hello") {
-    @Override
-    public Object handle(Request request, Response response) {
-       return new MyMessage("Hello World");
-    }
- });
+ get("/hello", "application/json", (request, response) -> {
+     return new MyMessage("Hello World");
+ }, new JsonTransformer());
 
 </code></pre>
 
-<h1 class="getting_started_head">Views / Templates - TemplateViewRoute </h1>
+<h1 class="getting_started_head">Views / Templates - TemplateEngine </h1>
 <div class="normal">
-A TemplateViewRoute is built up by a path (for url-matching) and the implementation of the 'render' method.
+A TemplateViewRoute is built up by a path (for url-matching) and the template engine holding the implementation of the 'render' method.
 Instead of returning the result of calling toString() as body the TemplateViewRoute returns the result of calling render method.
 <br/><br/>
 The primary purpose of this kind of Route is to provide a way to create generic and reusable components for rendering output using a Template Engine. 
 <br/><br/>
+
+<b>OBSERVE: The available implementations have not yet been updated to support Spark 2.0.0</b>
 
 <b>Available TemplateViewRoute implementations:</b>
 

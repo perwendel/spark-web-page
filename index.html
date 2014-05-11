@@ -46,6 +46,8 @@
 				framework for quickly creating web applications in Java with minimal effort</div>
 			<div class="contentText">
 				<div class="getting_started">
+				<h1 class="getting_started_head">News:</h1>
+				<div class="normal_text">Spark 2.0.0 re-written for Java 8 and Lambdas available on Maven central!</div>
 				<h1 class="getting_started_head">Quick start</h1>
 				<div class="normal_text"><a href="download.html">Download</a> the spark lib and its dependencies (Or just add as maven dependency). Put in your classpath and you're ready to go.</div>
 				<pre>
@@ -54,18 +56,13 @@ import static spark.Spark.*;
 import spark.*;
 
 public class HelloWorld {
-
    public static void main(String[] args) {
-      
-      get(new Route("/hello") {
-         @Override
-         public Object handle(Request request, Response response) {
-            return "Hello World!";
-         }
+   
+      get("/hello", (request, response) -> {
+         return "Hello World!";
       });
-
+   
    }
-
 }
 </code>
 </pre>
