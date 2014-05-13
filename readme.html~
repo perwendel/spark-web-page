@@ -438,7 +438,7 @@ Instead of returning the result of calling toString() as body the TemplateViewRo
 The primary purpose of this kind of Route is to provide a way to create generic and reusable components for rendering output using a Template Engine. 
 <br/><br/>
 
-<b>OBSERVE: The available implementations have not yet been updated to support Spark 2.0.0</b>
+<b>NEWS: The available implementations HAVE been updated to support Spark 2.0.0</b>
 
 <b>Available TemplateViewRoute implementations:</b>
 
