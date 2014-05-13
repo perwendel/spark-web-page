@@ -440,7 +440,7 @@ The primary purpose of this kind of Route is to provide a way to create generic 
 
 <b>NEWS: The available implementations HAVE been updated to support Spark 2.0.0</b>
 
-<b>Available TemplateViewRoute implementations:</b>
+<b>Available TemplateEngine implementations:</b>
 
 <br/><br/>
 <h1 class="getting_started_head_inner">-- FreeMarker</h1>
