@@ -67,8 +67,15 @@
 				<div class="getting_started">
 				<h1 class="getting_started_head">Getting started</h1>
 				<div class="normal_text">
-				<a href="download.html">Download</a> the spark lib and its dependencies (Or, let maven do all that for you).
-				Put in your classpath. Start coding:</div>
+				Add the Spark maven dependency</div>
+<pre class="prettyprint">&lt;dependency&gt;
+      &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
+      &lt;artifactId&gt;spark-core&lt;/artifactId&gt;
+      &lt;version&gt;2.0.0&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+<div class="normal_text">
+				Start coding:</div>
+
 				<pre>
             <code>
 import static spark.Spark.*;
