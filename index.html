@@ -6,9 +6,8 @@
     <head>
         <title>Spark Framework - A tiny Java web framework</title>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Spark Framework - Create web applications in Java with minimal effort.">
-        <link rel="stylesheet" media="screen" href="/assets/stylesheets/prism.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="description" content="Spark Framework - Create web applications in Java rapidly. Spark is a micro web framework that lets you focus on writing your code, not boilerplate code.">
         <link rel="stylesheet" media="screen" href="/assets/stylesheets/main.min.css">
         <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">
     </head>
@@ -21,8 +20,8 @@
         <!-- Fork me on GitHub -->
 <a class="fork-me" href="https://github.com/perwendel/spark" target="_blank"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 99999" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 <!-- End Fork me on GitHub -->
-        <div id="facebook-button-wrapper"><iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FSpark-Java%2F853301361356166&amp;width=70&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=708252702578720" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe></div>
-        <div id="flatttttr"><script id='fbzaf8s'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=per.i.wendel&button=compact&url=http%3A%2F%2Fwww.sparkjava.com';f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fbzaf8s');</script></div>
+        <div id="facebook-button-wrapper" class="decreased-opacity"><iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FSpark-Java%2F853301361356166&amp;width=70&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=708252702578720" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe></div>
+        <div id="flatttttr" class="decreased-opacity"><script id='fbzaf8s'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=per.i.wendel&button=compact&url=http%3A%2F%2Fwww.sparkjava.com';f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fbzaf8s');</script></div>
 
         <nav>
             <ul>
@@ -44,6 +43,8 @@
 
     <section id="intro">
 
+
+
         <h1>Quick start</h1>
         
 <div class="code-snippet"><pre><code class="language-java">import static spark.Spark.*;
@@ -58,6 +59,44 @@ public class HelloWorld {
 
         
 <div class="code-snippet"><pre><code class="language-markup">http://localhost:4567/hello</code></pre></div>
+
+        <h1>Built for productivity</h1>
+        <p>
+            Spark is a simple and lightweight Java web framework built for rapid development.
+            Spark's intention is not to compete with Sinatra, or the dozen of clones in different languages, but to
+            provide a pure Java alternative for developers that want to, or are required to, develop in Java.
+        </p>
+
+        <p>
+            Spark focuses on being as simple and straight-forward as possible, without the need for cumbersome
+            (XML) configuration, to enable very fast web application development in pure Java with minimal effort.
+            It’s a totally different paradigm when compared to the overuse of annotations for accomplishing pretty
+            trivial stuff seen in, for example, JAX-RS.
+        </p>
+
+        <h2>Why use Spark?</h2>
+        <p>
+            If you're a Java developer with neither the urge nor time to learn a new programming language,
+            and you're not planning to build a super large web application that scales in all directions,
+            then Spark is a great alternative. It will have you up and running in minutes, and you won't have to think 
+            too much about configuration and boilerplate code.
+        </p>
+
+        <h2>Why not use Sinatra?</h2>
+        <p>
+            If you're an experienced Ruby developer, or have experience with languages with similar syntax,
+            you should definitely use Sinatra. However, if you're a Java developer and want to get the benefits you get
+            from Sinatra without having to learn a new language, Spark is a really good alternative!
+        </p>
+
+        <h2>Why not go with JAX-RS?</h2>
+        <p>
+            JAX-RS is a nice API that made life easier for Java web developers when it arrived.
+            However, it's a bit messy due to the overuse of annotations for accomplishing pretty trivial things.
+            The annotation magic also makes things more implicit and it's not always easy to get a clear
+            understanding of what is going on. For a newbie in web frameworks and REST,
+            Spark will have you up and running much faster than using one of the JAX-RS implementations.
+        </p>
 
     </section>
 
