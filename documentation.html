@@ -20,21 +20,23 @@
         <!-- Fork me on GitHub -->
 <a class="fork-me" href="https://github.com/perwendel/spark" target="_blank"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 99999" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 <!-- End Fork me on GitHub -->
+        <img id="placeholderbuttons" src="/assets/images/placeholderbuttons.png" alt="Placerholder buttons for social media">
         <div id="facebook-button-wrapper" class="decreased-opacity"><iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FSpark-Java%2F853301361356166&amp;width=70&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=708252702578720" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe></div>
         <div id="flatttttr" class="decreased-opacity"><script id='fbzaf8s'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=per.i.wendel&button=compact&url=http%3A%2F%2Fwww.sparkjava.com';f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fbzaf8s');</script></div>
 
         <nav>
             <ul>
-                <li id="logo"><a href="/"><img src="/assets/images/logo.png" alt="Spark framework logo"></a></li>
-                <li><a href="/contact.html">Contact</a></li>
-                <li><a href="/documentation.html">Documentation</a></li>
-                <li><a href="/download.html">Download</a></li>
+                <li id="logo"><a href="/"><img src="/assets/images/logo.svg" alt="Spark framework logo"></a></li>
+                <li id="contact-li"><a href="/contact.html">Contact</a></li>
+                <li id="documentation-li"><a href="/documentation.html">Documentation</a></li>
+                <li id="download-li"><a href="/download.html">Download</a></li>
             </ul>
         </nav>
         <div class="padding-hack"></div>
         
 
 <section id="docs">
+
     <ul id="docs-nav">
         <li><a href="#getting-started">Getting Started</a></li>
         <li><a href="#stopping-the-server">Stopping the server</a></li>
@@ -88,6 +90,11 @@
 <p>Run and view:</p>
 
 <div class="code-snippet"><pre><code class="language-markup">http://localhost:4567/hello</code></pre></div>
+
+<p class="code-comment">
+    That was easy, right? Spark is the simplest Java web framework to set up,
+    while still providing enough functionality for many types of projects.
+</p>
     
 <h1 id="stopping-the-server" class="anchor">Stopping the Server</h1>
 <p>By calling the stop() method the server is stopped and all routes are cleared.<br><br></p>
@@ -404,14 +411,16 @@ public class JsonTransformer implements ResponseTransformer {
 
 </section>
 
-
-
+        <script type="text/javascript" src="/assets/javascripts/smoothscroll.min.js"></script>
         <script type="text/javascript" src="/assets/javascripts/prism.js"></script>
 
         <footer>
             Spark is created and maintained by <a href="https://www.linkedin.com/in/perwendel" target="_blank">Per Wendel</a>.
             Logo and website by <a href="https://www.linkedin.com/in/davidaase" target="_blank">David Åse</a>
         </footer>
+
+        <script>document.getElementById(document.URL.split("#")[0].slice(document.URL.lastIndexOf('/')+1, -5)+"-li").className = "active";</script>
+
     </body>
 
 </html>
