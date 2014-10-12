@@ -2,20 +2,28 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="svg2816" xmlns:svg="http://www.w3.org/2000/svg"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="181px" height="181.6px"
-	 viewBox="4.3 9.2 181 181.6" enable-background="new 4.3 9.2 181 181.6" xml:space="preserve">
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="200px" height="200px"
+	 viewBox="-9.5 -9.2 200 200" enable-background="new -9.5 -9.2 200 200" xml:space="preserve">
+<g>
+	<path fill="#FFFFFF" d="M90.5,185.8c-52.383,0-95-42.617-95-95c0-52.383,42.617-95,95-95c52.383,0,95,42.617,95,95
+		C185.5,143.183,142.883,185.8,90.5,185.8z"/>
+	<path fill="#397844" d="M90.5,0.8c49.626,0,90,40.374,90,90c0,49.626-40.374,90-90,90c-49.626,0-90-40.374-90-90
+		C0.5,41.174,40.874,0.8,90.5,0.8 M90.5-9.2c-55.229,0-100,44.771-100,100c0,55.229,44.771,100,100,100c55.229,0,100-44.771,100-100
+		C190.5,35.572,145.729-9.2,90.5-9.2L90.5-9.2z"/>
+</g>
 <g id="g2828" transform="translate(3.4274813,7.3601302)">
 	<g id="g2830">
 		<g id="g2836">
 			<g id="g2838">
 				
-					<linearGradient id="path2846_1_" gradientUnits="userSpaceOnUse" x1="223.9851" y1="-10.6919" x2="224.9856" y2="-10.6919" gradientTransform="matrix(0 -168.4406 168.4406 0 1886.1555 37898.5039)">
+					<linearGradient id="path2846_1_" gradientUnits="userSpaceOnUse" x1="3.8132" y1="489.4184" x2="4.4695" y2="489.4184" gradientTransform="matrix(0 -168.4406 -168.4406 0 82520.8125 776.7603)">
 					<stop  offset="0" style="stop-color:#EA5F29"/>
 					<stop  offset="1" style="stop-color:#FABD1F"/>
 				</linearGradient>
-				<path id="path2846" fill="url(#path2846_1_)" d="M65.9,1.8c-43,0-65,24.8-65,71.2l0,0v32.4v64.9L43,128V78.6
-					c0-19.2,5.1-31.4,22.1-34.2l0,0c6-1.2,18.3-0.8,26.2-0.8l0,0V73c0,0.3,0,0.7,0.1,1l0,0c0.3,1.2,1.4,2.1,2.7,2.1l0,0
-					c0.7,0,1.4-0.4,2.1-1.1l0,0l73.1-73.2h-49H65.9z"/>
+				<path id="path2846" fill="url(#path2846_1_)" d="M70.341,23.864c-28.214,0-42.649,16.271-42.649,46.716l0,0v21.257v42.585
+					l27.623-27.756V74.254c0-12.598,3.346-20.603,14.5-22.439l0,0c3.937-0.788,12.008-0.524,17.191-0.524l0,0v19.29
+					c0,0.197,0,0.459,0.066,0.656l0,0c0.196,0.787,0.918,1.377,1.771,1.377l0,0c0.46,0,0.92-0.263,1.378-0.721l0,0l47.964-48.029
+					h-32.15H70.341z"/>
 			</g>
 		</g>
 	</g>
@@ -25,13 +33,14 @@
 		<g id="g2856">
 			<g id="g2858">
 				
-					<linearGradient id="path2866_1_" gradientUnits="userSpaceOnUse" x1="231.7048" y1="-7.7071" x2="232.7058" y2="-7.7071" gradientTransform="matrix(0 168.4399 -168.4399 0 -1200.571 -39013.543)">
+					<linearGradient id="path2866_1_" gradientUnits="userSpaceOnUse" x1="15.3391" y1="488.8364" x2="15.9959" y2="488.8364" gradientTransform="matrix(0 168.4399 168.4399 0 -82248.2109 -2551.2827)">
 					<stop  offset="0" style="stop-color:#ABD33C"/>
 					<stop  offset="1" style="stop-color:#6CB02F"/>
 				</linearGradient>
-				<path id="path2866" fill="url(#path2866_1_)" d="M139.8,57.1v49.4c0,19.2-5.1,31.4-22.1,34.2l0,0c-6,1.2-18.3,0.8-26.2,0.8l0,0
-					v-29.3c0-0.3,0-0.7-0.1-1l0,0c-0.3-1.2-1.4-2.1-2.7-2.1l0,0c-0.7,0-1.4,0.4-2.1,1.1l0,0l-73.1,73.2h49h54.4
-					c43,0,65-24.8,65-71.2l0,0V79.7V14.8L139.8,57.1z"/>
+				<path id="path2866" fill="url(#path2866_1_)" d="M118.829,60.147V92.56c0,12.598-3.347,20.603-14.501,22.439l0,0
+					c-3.937,0.787-12.007,0.525-17.19,0.525l0,0V96.3c0-0.196,0-0.459-0.065-0.656l0,0c-0.197-0.786-0.919-1.377-1.772-1.377l0,0
+					c-0.458,0-0.918,0.262-1.378,0.722l0,0l-47.963,48.028H68.11h35.694c28.213,0,42.648-16.272,42.648-46.717l0,0V74.975V32.393
+					L118.829,60.147z"/>
 			</g>
 		</g>
 	</g>
