@@ -4,7 +4,7 @@
 
 <html>
     <head>
-        <title>Spark Framework - A tiny Java web framework</title>
+        <title>Spark Framework - News</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <meta name="description" content="Spark Framework - Create web applications in Java rapidly. Spark is a micro web framework that lets you focus on writing your code, not boilerplate code.">
@@ -40,19 +40,79 @@
         <div class="padding-hack"></div>
         
 
-    <div class="spark-banner-background">
-        <section id="spark-banner">
-            <img src="/assets/images/logo_just_spark.svg" alt="Spark framework logo">
-            <h1 class="intro-text">Spark - A tiny <a href="http://www.sinatrarb.com/" target="_blank">Sinatra</a> inspired framework for creating web applications in Java 8 with minimal effort</h1>
-        </section>
-    </div>
-
-    <section id="intro">
-
-
-
-        <h1>Quick start</h1>
+    <section id="news">
+        <ul id="news-nav">
+            <li><a href="#sparkworldwide">Spark worldwide   <span class="news-date">(Oct 2014)</span></a></li>
+            <li><a href="#websiteredesign">Website redesign   <span class="news-date">(Sep 2014)</span></a></li>
+            <li><a href="#spark2released"> Spark 2 released   <span class="news-date">(May 2014)</span></a></li>
+        </ul>
         
+
+<h1 id="sparkworldwide" class="anchor">
+    <img src="/assets/images/logo_just_spark.svg" alt="Spark framework logo" class="news-bullet">
+    Spark is used all around the world (Oct 2014)
+</h1>
+
+<p>
+    One month after the website redesign we decided to have a look at which countries Spark users come from,
+    so we created a heat map of our website visitors. While this is probably not 100% corresponding to our
+    user base, it's reasonable to assume that it's pretty close. We're proud to be a Java web framework with such
+    a diverse user base, but Africa (and Greenland) seem to be a little underrepresented...
+    If you know any web developers there, please spread the word (ᵔᴥᵔ)
+</p>
+
+<img src="/assets/images/news/sparkworld.png" alt="Spark usage heatmap">
+
+<h2>Top ten countries</h2>
+<ol>
+    <li>United states <b>(23.44%)</b></li>
+    <li>China         <b>(7.06%)</b></li>
+    <li>Germany       <b>(6.21%)</b></li>
+    <li>India         <b>(5.44%)</b></li>
+    <li>United Kingdom<b>(5.09%)</b></li>
+    <li>France        <b>(3.52%)</b></li>
+    <li>Brazil        <b>(3.04%)</b></li>
+    <li>Poland        <b>(2.95%)</b></li>
+    <li>Japan         <b>(2.70%)</b></li>
+    <li>Canada        <b>(2.56%)</b></li>
+</ol>
+
+<p>In total we had visitors from 141 different countries!</p>
+
+        
+
+<h1 id="websiteredesign" class="anchor">
+    <img src="/assets/images/logo_just_spark.svg" alt="Spark framework logo" class="news-bullet">
+    Website redesign (Sep 2014)
+</h1>
+
+<img src="/assets/images/news/redesign.png" alt="Spark Website before and after">
+
+<p>
+    We're happy to announce that we have completely redesigned our website and graphic profile.
+    The new website should be easier to navigate, and much more mobile friendly.
+    <br>
+    If you have any issues or comments about the new design, please write to us on our
+    <a href="https://www.facebook.com/sparkjava" target="_blank">Facebook page</a>.
+</p>
+
+
+        
+
+<h1 id="spark2released" class="anchor">
+    <img src="/assets/images/logo_just_spark.svg" alt="Spark framework logo" class="news-bullet">
+    Spark 2.0.0 released (May 2014)
+</h1>
+
+<p>
+    Spark 2.0.0 is a complete rewrite of the old Spark core to provide support for the new Java 8 lambdas.<br>
+    The new paradigm is hugely based on the lambda philosophy, so Java 7 is officially not supported anymore.
+    If you want to work with Java 7, you can still use Spark 1, but it will unfortunately longer be updated.
+    Please consider migrating to Java 8 if at all possible :)
+</p>
+
+<h2>Spark 2 Hello World</h2>
+
 <div class="code-snippet"><pre><code class="language-java">import static spark.Spark.*;
 
 public class HelloWorld {
@@ -61,54 +121,25 @@ public class HelloWorld {
     }
 }</code></pre></div>
 
-        <h1>Run and view</h1>
 
-        
-<div class="code-snippet"><pre><code class="language-markup">http://localhost:4567/hello</code></pre></div>
+<h2>Spark 1 Hello World</h2>
 
-        <h1>Built for productivity</h1>
-        <p>
-            Spark is a simple and lightweight Java web framework built for rapid development.
-            Spark's intention isn't to compete with Sinatra, or the dozen of similar web frameworks in different
-            languages, but to provide a pure Java alternative for developers that want to, or are required to,
-            develop in Java.
-        </p>
+<div class="code-snippet"><pre><code class="language-java">import static spark.Spark.*;
+import spark.*;
 
-        <p>
-            Spark focuses on being as simple and straight-forward as possible, without the need for cumbersome
-            (XML) configuration, to enable very fast web application development in pure Java with minimal effort.
-            It’s a totally different paradigm when compared to the overuse of annotations for accomplishing pretty
-            trivial stuff seen in other web frameworks, for example, JAX-RS implementations.
-        </p>
-
-        <h2>Why use Spark?</h2>
-        <p>
-            If you're a Java developer with neither the urge nor time to learn a new programming language,
-            and you're not planning to build a super large web application that scales in all directions,
-            then Spark might be a great web framework for you. It will have you up and running in minutes,
-            and you won't have to think too much about configuration and boilerplate code (like you often have to
-            in other Java web frameworks, like Spring or Vaadin).
-        </p>
-
-        <h2>Why not use Sinatra?</h2>
-        <p>
-            If you're an experienced Ruby developer, or have experience with languages with similar syntax,
-            you should definitely use Sinatra. However, if you're a Java developer and want to get the benefits you get
-            from Sinatra without having to learn a new language, Spark is a really good alternative. Spark is a simple
-            and lightweight Java web framework that doesn't get in your way!
-        </p>
-
-        <h2>Why not go with JAX-RS?</h2>
-        <p>
-            JAX-RS made life easier for Java web developers when it arrived. However, it's a bit messy due to the
-            overuse of annotations for accomplishing pretty trivial things. The annotation magic also makes things more
-            implicit, and it's not always easy to get a clear understanding of what's going on.
-            For people who are new to web frameworks and REST, Spark will have you up and running much faster
-            than using one of the JAX-RS implementations.
-        </p>
-
+public class HelloWorld {
+    public static void main(String[] args) {
+        get(new Route(&quot;/hello&quot;) {
+            @Override
+            public Object handle(Request request, Response response) {
+                return &quot;Hello World!&quot;;
+            }
+        });
+    }
+}</code></pre></div>
     </section>
-    <wbr id="-li"> <!-- Guess why..!  x) -->
+
+    <script type="text/javascript" src="/assets/javascripts/smoothscroll.min.js"></script>
 
         <script type="text/javascript" src="/assets/javascripts/prism.js"></script>
 
@@ -122,4 +153,3 @@ public class HelloWorld {
     </body>
 
 </html>
-

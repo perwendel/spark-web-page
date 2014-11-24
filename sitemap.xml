@@ -7,25 +7,31 @@
 
 <url>
   <loc>http://sparkjava.com/</loc>
-  <lastmod>2014-09-28T14:00:00+00:00</lastmod>
+  <lastmod>2014-11-05T14:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>1.00</priority>
 </url>
 <url>
+  <loc>http://sparkjava.com/news.html</loc>
+  <lastmod>2014-11-05T14:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>http://sparkjava.com/contact.html</loc>
-  <lastmod>2014-09-28T14:00:00+00:00</lastmod>
+  <lastmod>2014-11-05T14:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://sparkjava.com/documentation.html</loc>
-  <lastmod>2014-09-28T14:00:00+00:00</lastmod>
+  <lastmod>2014-11-05T14:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://sparkjava.com/download.html</loc>
-  <lastmod>2014-09-28T14:00:00+00:00</lastmod>
+  <lastmod>2014-11-05T14:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
