@@ -78,8 +78,8 @@
         <li><a href="#views-templates">Views and Templates</a>
             <ul>
                 <li><a href="#freemarker">- Freemarker</a></li>
-                <li><a href="#velocity">- Velocity</a></li>
                 <li><a href="#mustache">- Mustache</a></li>
+                <li><a href="#velocity">- Velocity</a></li>
             </ul>
         </li>
         <li><a href="#port">Port</a></li>
@@ -358,20 +358,6 @@ public class JsonTransformer implements ResponseTransformer {
 <p>Code example: <a target="blank" href="https://github.com/perwendel/spark-template-engines/blob/master/spark-template-freemarker/src/test/java/spark/template/freemarker/example/FreeMarkerExample.java">spark-template-freemarker example</a>.</p>
 </div>
     
-<h2 id="velocity" class="anchor">Velocity</h2>
-<p>Renders objects to HTML using the Velocity template engine.</p>
-<p>Maven dependency:</p>
-
-<div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
-    &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
-    &lt;artifactId&gt;spark-template-velocity&lt;/artifactId&gt;
-    &lt;version&gt;2.0.0&lt;/version&gt;
-&lt;/dependency&gt;</code></pre></div>
-<div class="force-up">
-<p>Source: <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-velocity">spark-template-velocity</a>.</p>
-<p>Code example: <a target="blank" href="https://github.com/perwendel/spark-template-engines/blob/master/spark-template-velocity/src/test/java/spark/template/velocity/example/VelocityExample.java">spark-template-velocity example</a>.</p>
-</div>
-    
 <h2 id="mustache" class="anchor">Mustache</h2>
 <p>Renders objects to HTML using the Mustache template engine.</p>
 <p>Maven dependency:</p>
@@ -384,6 +370,20 @@ public class JsonTransformer implements ResponseTransformer {
 <div class="force-up">
 <p>Source: <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-mustache">spark-template-mustache</a>.</p>
 <p>Code example: <a target="blank" href="https://github.com/perwendel/spark-template-engines/blob/master/spark-template-mustache/src/test/java/spark/template/mustache/MustacheTemplateExample.java">spark-template-mustache example</a>.</p>
+</div>
+    
+<h2 id="velocity" class="anchor">Velocity</h2>
+<p>Renders objects to HTML using the Velocity template engine.</p>
+<p>Maven dependency:</p>
+
+<div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
+    &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
+    &lt;artifactId&gt;spark-template-velocity&lt;/artifactId&gt;
+    &lt;version&gt;2.0.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre></div>
+<div class="force-up">
+<p>Source: <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-velocity">spark-template-velocity</a>.</p>
+<p>Code example: <a target="blank" href="https://github.com/perwendel/spark-template-engines/blob/master/spark-template-velocity/src/test/java/spark/template/velocity/example/VelocityExample.java">spark-template-velocity example</a>.</p>
 </div>
     
 <h1 id="port" class="anchor">Port</h1>
@@ -439,8 +439,8 @@ public class JsonTransformer implements ResponseTransformer {
         <script type="text/javascript" src="/assets/javascripts/prism.js"></script>
 
         <footer>
-            Spark is created and maintained by <a href="https://www.linkedin.com/in/perwendel" target="_blank">Per Wendel</a>.
-            Logo and website by <a href="https://www.linkedin.com/in/davidaase" target="_blank">David Åse</a>
+            Spark is an open source project founded by <a href="https://www.linkedin.com/in/perwendel" target="_blank">Per Wendel</a>, who is also the lead developer.
+            Logo and website by <a href="https://www.linkedin.com/in/davidaase" target="_blank">David Åse</a>.
         </footer>
 
         <script>document.getElementById(document.URL.split("#")[0].slice(document.URL.lastIndexOf('/')+1, -5)+"-li").className = "active";</script>
