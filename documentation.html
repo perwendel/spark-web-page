@@ -338,6 +338,10 @@ public class JsonTransformer implements ResponseTransformer {
 <div class="code-snippet"><pre><code class="language-java">get(&quot;/hello&quot;, &quot;application/json&quot;, (request, response) -&gt; {
     return new MyMessage(&quot;Hello World&quot;);
 }, new JsonTransformer());</code></pre></div>
+
+<p>You can also use Java 8 method references, since ResponseTransformer is an interface with one method:</p>
+<div class="code-snippet"><pre><code class="language-java">Gson gson = new Gson();
+get(&quot;/hello&quot;, (request, response) -&gt; new MyMessage(&quot;Hello World&quot;), gson::toJson);</code></pre></div>
     
 <h1 id="views-templates" class="anchor">Views and Templates</h1>
 <p>A TemplateViewRoute is built up by a path (for url-matching) and the template engine holding the implementation of the 'render' method. Instead of returning the result of calling toString() as body the TemplateViewRoute returns the result of calling render method.</p>
