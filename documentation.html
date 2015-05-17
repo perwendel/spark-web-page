@@ -76,15 +76,23 @@
         <li><a href="#static-files">Static files</a></li>
         <li><a href="#response-transformer">ResponseTransformer</a></li>
         <li><a href="#views-templates">Views and Templates</a>
-            <ul>
-                <li><a href="#freemarker">- Freemarker</a></li>
+            <ul><li><a href="#freemarker">- Freemarker</a></li>
                 <li><a href="#mustache">- Mustache</a></li>
                 <li><a href="#velocity">- Velocity</a></li>
+                <li><a href="#handlebars">- Handlebars</a></li>
+                <li><a href="#pebble">- Pebble</a></li>
+                <li><a href="#water">- Water</a></li>
             </ul>
         </li>
-        <li><a href="#port">Port</a></li>
-        <li><a href="#embedded-webserver">Embedded Webserver</a></li>
+        <li><a href="#embedded-webserver">Embedded Webserver</a>
+            <ul><li><a href="#port">- Port</a></li>
+                <li><a href="#secure">- Secure</a></li>
+                <li><a href="#threadpool">- ThreadPool</a></li>
+                <li><a href="#awaitinit">- Waiting for Initialization</a></li>
+            </ul>
+        </li>
         <li><a href="#other-webserver">Other Webserver</a></li>
+        <li><a href="#gzip">GZIP</a></li>
         <li><a href="#javadoc">Javadoc</a></li>
         <li><a href="#examples">Examples</a></li>
     </ul>
@@ -338,12 +346,18 @@ public class JsonTransformer implements ResponseTransformer {
 <div class="code-snippet"><pre><code class="language-java">get(&quot;/hello&quot;, &quot;application/json&quot;, (request, response) -&gt; {
     return new MyMessage(&quot;Hello World&quot;);
 }, new JsonTransformer());</code></pre></div>
+
+<p>You can also use Java 8 method references, since ResponseTransformer is an interface with one method:</p>
+
+<div class="code-snippet"><pre><code class="language-java">Gson gson = new Gson();
+get(&quot;/hello&quot;, (request, response) -&gt; new MyMessage(&quot;Hello World&quot;), gson::toJson);</code></pre></div>
     
 <h1 id="views-templates" class="anchor">Views and Templates</h1>
 <p>A TemplateViewRoute is built up by a path (for url-matching) and the template engine holding the implementation of the 'render' method. Instead of returning the result of calling toString() as body the TemplateViewRoute returns the result of calling render method.</p>
 
 <p>The primary purpose of this kind of Route is to provide a way to create generic and reusable components for rendering output using a Template Engine.<br><br></p>
-    
+        
+
 <h2 id="freemarker" class="anchor">Freemarker</h2>
 <p>Renders objects to HTML using the Freemarker template engine.</p>
 <p>Maven dependency:</p>
@@ -354,10 +368,10 @@ public class JsonTransformer implements ResponseTransformer {
     &lt;version&gt;2.0.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre></div>
 <div class="force-up">
-<p>Source: <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-freemarker">spark-template-freemarker</a>.</p>
-<p>Code example: <a target="blank" href="https://github.com/perwendel/spark-template-engines/blob/master/spark-template-freemarker/src/test/java/spark/template/freemarker/example/FreeMarkerExample.java">spark-template-freemarker example</a>.</p>
+    <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-freemarker">GitHub</a>
 </div>
-    
+        
+
 <h2 id="mustache" class="anchor">Mustache</h2>
 <p>Renders objects to HTML using the Mustache template engine.</p>
 <p>Maven dependency:</p>
@@ -368,10 +382,10 @@ public class JsonTransformer implements ResponseTransformer {
     &lt;version&gt;1.0.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre></div>
 <div class="force-up">
-<p>Source: <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-mustache">spark-template-mustache</a>.</p>
-<p>Code example: <a target="blank" href="https://github.com/perwendel/spark-template-engines/blob/master/spark-template-mustache/src/test/java/spark/template/mustache/MustacheTemplateExample.java">spark-template-mustache example</a>.</p>
+    <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-mustache">GitHub</a>
 </div>
-    
+        
+
 <h2 id="velocity" class="anchor">Velocity</h2>
 <p>Renders objects to HTML using the Velocity template engine.</p>
 <p>Maven dependency:</p>
@@ -382,24 +396,104 @@ public class JsonTransformer implements ResponseTransformer {
     &lt;version&gt;2.0.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre></div>
 <div class="force-up">
-<p>Source: <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-velocity">spark-template-velocity</a>.</p>
-<p>Code example: <a target="blank" href="https://github.com/perwendel/spark-template-engines/blob/master/spark-template-velocity/src/test/java/spark/template/velocity/example/VelocityExample.java">spark-template-velocity example</a>.</p>
+    <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-velocity">GitHub</a>
+</div>
+        
+
+<h2 id="handlebars" class="anchor">Handlebars</h2>
+<p>Renders objects to HTML using the Handlebars template engine.</p>
+<p>Maven dependency:</p>
+
+<div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
+    &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
+    &lt;artifactId&gt;spark-template-handlebars&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre></div>
+<div class="force-up">
+    <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-handlebars">GitHub</a>
+</div>
+        
+
+<h2 id="pebble" class="anchor">Pebble</h2>
+<p>Renders objects to HTML using the Pebble template engine.</p>
+<p>Maven dependency:</p>
+
+<div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
+    &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
+    &lt;artifactId&gt;spark-template-pebble&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre></div>
+<div class="force-up">
+    <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-pebble">GitHub</a>
+</div>
+        
+
+<h2 id="water" class="anchor">Water</h2>
+<p>Renders objects to HTML using the Water template engine.</p>
+<p>Maven dependency:</p>
+
+<div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
+    &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
+    &lt;artifactId&gt;spark-template-water&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre></div>
+<div class="force-up">
+    <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-water">GitHub</a>
 </div>
     
-<h1 id="port" class="anchor">Port</h1>
+<h1 id="embedded-webserver" class="anchor">Embedded webserver</h1>
+<p>
+    Standalone Spark runs on an embedded <a href="http://eclipse.org/jetty/" target="_blank">Jetty</a> web server.
+</p>
+<br>
+        
+<h2 id="port" class="anchor">Port</h2>
 <p>By default, Spark runs on port 4567. If you want to set another port use <i>port</i>. This has to be done before using routes and filters:</p>
 
 <div class="code-snippet"><pre><code class="language-java">port(9090); // Spark will run on port 9090</code></pre></div>
-    
-<h1 id="embedded-webserver" class="anchor">Embedded webserver</h1>
-<p>Standalone Spark runs on an embedded Jetty web server.</p>
+        
+<h2 id="secure" class="anchor">Secure</h2>
+<p>
+    You can set the connection to be secure via the <em>secure</em> method.
+    This has to be done before any route mapping:
+</p>
+
+<div class="code-snippet"><pre><code class="language-java">secure(keystoreFile, keystorePassword, truststoreFile, truststorePassword);</code></pre></div>
+        
+<h2 id="threadpool" class="anchor">ThreadPool</h2>
+<p>You can set the maximum number of threads easily:</p>
+
+<div class="code-snippet"><pre><code class="language-java">int maxThreads = 8;
+threadPool(maxThreads);</code></pre></div>
+<p>You can also configure the minimum numbers of threads, and the idle timeout:</p>
+
+
+<div class="code-snippet"><pre><code class="language-java">int maxThreads = 8;
+int minThreads = 2;
+int timeOutMillis = 30000;
+threadPool(maxThreads, minThreads, timeOutMillis);</code></pre></div>
+
+        
+<h1 id="awaitinit" class="anchor">Waiting for Initialization</h1>
+<p>
+    You can use the method <em>awaitInitialization()</em> to check if the server is ready to handle requests.
+    This is usually done in a separate thread, for example to run a health check module after your server has started.
+    <br>
+    The method causes the current thread to wait until the embedded Jetty server has been initialized.
+    Initialization is triggered by defining routes and/or filters.
+    Hence, if you're using just one thread don't put this before you define your routes and/or filters.
+
+</p>
+
+<div class="code-snippet"><pre><code class="language-java">awaitInitialization(); // Wait for server to be initialized</code></pre></div>
+
     
 <h1 id="other-webserver" class="anchor">Other webserver</h1>
 <p>
-    To run Spark on a web server instead of standalone first of all an
-    implementation of the interface spark.servlet.SparkApplication is needed.
-    In the init() method the routes should be initialized.
-    In your web.xml the following filter needs to be configured:
+    To run Spark on a web server (instead of standalone),
+    an implementation of the interface spark.servlet.SparkApplication is needed.
+    You have to initialize the routes in the init() method,
+    and the following filter has to be configured in your web.xml:
 </p>
 
 
@@ -416,6 +510,9 @@ public class JsonTransformer implements ResponseTransformer {
     &lt;filter-name&gt;SparkFilter&lt;/filter-name&gt;
     &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
 &lt;/filter-mapping&gt;</code></pre></div>
+    
+<h1 id="gzip" class="anchor">GZIP</h1>
+<p>GZIP is done automatically if it's in the request/response headers.<br><br></p>
     
 <h1 id="javadoc" class="anchor">Javadoc</h1>
 
