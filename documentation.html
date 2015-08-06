@@ -102,16 +102,19 @@
     &lt;artifactId&gt;spark-core&lt;/artifactId&gt;
     &lt;version&gt;2.2&lt;/version&gt;
 &lt;/dependency&gt;</code></pre></div>
+<a class="maven-help" href="https://sparktutorials.github.io/2015/04/02/setting-up-a-spark-project-with-maven.html" target="_blank">
+    Not familiar with Maven? Click here for more detailed instructions.
+</a>
 
 <p>Start coding:</p>
 
 <div class="code-snippet"><pre><code class="language-java">import static spark.Spark.*;
 
-    public class HelloWorld {
-        public static void main(String[] args) {
-            get(&quot;/hello&quot;, (req, res) -&gt; &quot;Hello World&quot;);
-        }
-    }</code></pre></div>
+public class HelloWorld {
+    public static void main(String[] args) {
+        get(&quot;/hello&quot;, (req, res) -&gt; &quot;Hello World&quot;);
+    }
+}</code></pre></div>
 
 <p>Run and view:</p>
 
@@ -308,11 +311,12 @@ exception(NotFoundException.class, (e, request, response) -&gt; {
 <p>
     You can assign a folder in the classpath serving static files with the staticFileLocation method.
     Note that the public directory name is not included in the URL.<br>
-    A file /public/css/style.css is made available as http://{host}:{port}/css/style.css
+    A file <strong>/public/css/style.css</strong> is made available as <strong>http://{host}:{port}/css/style.css</strong>
 </p>
 
 <div class="code-snippet"><pre><code class="language-java">staticFileLocation(&quot;/public&quot;); // Static files</code></pre></div>
-<p>You can also assign an external folder (not in the classpath) serving static files with the externalStaticFileLocation method.</p>
+
+<p>You can also assign an external folder (a folder not in the classpath) to serve static files by using the externalStaticFileLocation method.</p>
 
 <div class="code-snippet"><pre><code class="language-java">externalStaticFileLocation(&quot;/var/www/public&quot;); // Static files</code></pre></div>
     
@@ -499,7 +503,7 @@ threadPool(maxThreads, minThreads, timeOutMillis);</code></pre></div>
     
 <h1 id="other-webserver" class="anchor">Other webserver</h1>
 <p>
-    To run Spark on a web server (instead of standalone),
+    To run Spark on a web server (instead of the embedded jetty server),
     an implementation of the interface spark.servlet.SparkApplication is needed.
     You have to initialize the routes in the init() method,
     and the following filter has to be configured in your web.xml:
@@ -534,11 +538,17 @@ threadPool(maxThreads, minThreads, timeOutMillis);</code></pre></div>
 
     
 <h1 id="examples" class="anchor">Examples and Tutorials</h1>
+
+<h2>Examples</h2>
+<p>Examples can be found on the project's page on <a target="_blank" href="https://github.com/perwendel/spark/blob/master/README.md#examples">GitHub</a></p>
+
+<h2>Text Tutorials</h2>
+<p>Tutorials can be found on the <a target="_blank" href="https://sparktutorials.github.io/">Spark tutorial page</a></p>
+
+<h2>Video Tutorials</h2>
 <p>
-    Examples can be found on the project's page on <a target="_blank" href="https://github.com/perwendel/spark/blob/master/README.md">GitHub</a>
-</p>
-<p>
-    Tutorials can be found on the <a target="_blank" href="https://sparktutorials.github.io/">Spark tutorial page</a>
+    <a href="https://www.learnhowtoprogram.com/table-of-contents" target="_blank">learnhowtoprogram.com</a> have created a lot of Spark video tutorials as part of a beginners course in Java web development.
+    These tutorials can be found <a target="_blank" href="https://sparktutorials.github.io/2015/08/04/spark-video-tutorials.html">here</a>.
 </p>
 
 </section>
