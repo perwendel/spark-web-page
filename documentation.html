@@ -57,7 +57,7 @@
 
     <ul class="side-nav" id="docs-nav">
         <li><a href="#getting-started">Getting Started</a></li>
-        <li><a href="#stopping-the-server">Stopping the server</a></li>
+        <li><a href="#stopping-the-server">Stopping the Server</a></li>
         <li><a href="#routes">Routes</a></li>
         <li><a href="#request">Request</a></li>
         <li><a href="#response">Response</a></li>
@@ -68,13 +68,15 @@
         <li><a href="#filters">Filters</a></li>
         <li><a href="#redirects">Redirects</a></li>
         <li><a href="#exception-mapping">Exception Mapping</a></li>
-        <li><a href="#static-files">Static files</a></li>
+        <li><a href="#static-files">Static Files</a></li>
         <li><a href="#response-transformer">ResponseTransformer</a></li>
         <li><a href="#views-templates">Views and Templates</a>
             <ul><li><a href="#freemarker">- Freemarker</a></li>
                 <li><a href="#mustache">- Mustache</a></li>
                 <li><a href="#velocity">- Velocity</a></li>
+                <li><a href="#thymeleaf">- Thymeleaf</a></li>
                 <li><a href="#jade">- Jade</a></li>
+                <li><a href="#jetbrick">- Jetbrick</a></li>
                 <li><a href="#handlebars">- Handlebars</a></li>
                 <li><a href="#pebble">- Pebble</a></li>
                 <li><a href="#water">- Water</a></li>
@@ -85,6 +87,7 @@
                 <li><a href="#secure">- Secure</a></li>
                 <li><a href="#threadpool">- ThreadPool</a></li>
                 <li><a href="#awaitinit">- Waiting for Initialization</a></li>
+                <li><a href="#websockets">- WebSockets</a>
             </ul>
         </li>
         <li><a href="#other-webserver">Other Webserver</a></li>
@@ -101,7 +104,7 @@
 <div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
     &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
     &lt;artifactId&gt;spark-core&lt;/artifactId&gt;
-    &lt;version&gt;2.2&lt;/version&gt;
+    &lt;version&gt;2.3&lt;/version&gt;
 &lt;/dependency&gt;</code></pre></div>
 <a class="maven-help" href="https://sparktutorials.github.io/2015/04/02/setting-up-a-spark-project-with-maven.html" target="_blank">
     Not familiar with Maven? Click here for more detailed instructions.
@@ -179,32 +182,38 @@ get(&quot;/say/*/to/*&quot;, (request, response) -&gt; {
 <h1 id="request" class="anchor">Request</h1>
 <p>In the handle method request information and functionality is provided by the request parameter:</p>
 
-<div class="code-snippet"><pre><code class="language-java">request.body();               // request body sent by the client
-request.cookies();            // request cookies sent by the client
-request.contentLength();      // length of request body
-request.contentType();        // content type of request.body
-request.headers();            // the HTTP header list
-request.headers(&quot;BAR&quot;);       // value of BAR header
-request.attributes();         // the attributes list
-request.attribute(&quot;foo&quot;);     // value of foo attribute
-request.attribute(&quot;A&quot;, &quot;V&quot;);  // sets value of attribute A to V
-request.host();               // &quot;example.com&quot;
-request.ip();                 // client IP address
-request.pathInfo();           // the path info
-request.params(&quot;foo&quot;);        // value of foo path parameter
-request.params();             // map with all parameters
-request.port();               // the server port
-request.queryMap();           // the query map
-request.queryMap(&quot;foo&quot;);      // query map for a certain parameter
-request.queryParams(&quot;FOO&quot;);   // value of FOO query param
-request.queryParams();        // the query param list
-request.raw();                // raw request handed in by Jetty
-request.requestMethod();      // The HTTP method (GET, ..etc)
-request.scheme();             // &quot;http&quot;
-request.session();            // session management
-request.splat();              // splat (*) parameters
-request.url();                // &quot;http://example.com/foo&quot;
-request.userAgent();          // user agent</code></pre></div>
+<div class="code-snippet"><pre><code class="language-java">request.attributes();             // the attributes list
+request.attribute(&quot;foo&quot;);         // value of foo attribute
+request.attribute(&quot;A&quot;, &quot;V&quot;);      // sets value of attribute A to V
+request.body();                   // request body sent by the client
+request.bodyAsBytes();            // request body as bytes
+request.contentLength();          // length of request body
+request.contentType();            // content type of request.body
+request.contextPath();            // the context path, e.g. &quot;/hello&quot;
+request.cookies();                // request cookies sent by the client
+request.headers();                // the HTTP header list
+request.headers(&quot;BAR&quot;);           // value of BAR header
+request.host();                   // the host, e.g. &quot;example.com&quot;
+request.ip();                     // client IP address
+request.params(&quot;foo&quot;);            // value of foo path parameter
+request.params();                 // map with all parameters
+request.pathInfo();               // the path info
+request.port();                   // the server port
+request.protocol();               // the protocol, e.g. HTTP/1.1
+request.queryMap();               // the query map
+request.queryMap(&quot;foo&quot;);          // query map for a certain parameter
+request.queryParams();            // the query param list
+request.queryParams(&quot;FOO&quot;);       // value of FOO query param
+request.queryParamsValues(&quot;FOO&quot;)  // all values of FOO query param
+request.raw();                    // raw request handed in by Jetty
+request.requestMethod();          // The HTTP method (GET, ..etc)
+request.scheme();                 // &quot;http&quot;
+request.servletPath();            // the servlet path, e.g. /result.jsp
+request.session();                // session management
+request.splat();                  // splat (*) parameters
+request.uri();                    // the uri, e.g. &quot;http://example.com/foo&quot;
+request.url();                    // the url. e.g. &quot;http://example.com/foo&quot;
+request.userAgent();              // user agent</code></pre></div>
     
 <h1 id="response" class="anchor">Response</h1>
 <p>In the handle method response information and functionality is provided by the response parameter:</p>
@@ -365,7 +374,7 @@ get(&quot;/hello&quot;, (request, response) -&gt; new MyMessage(&quot;Hello Worl
 <div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
     &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
     &lt;artifactId&gt;spark-template-freemarker&lt;/artifactId&gt;
-    &lt;version&gt;2.0.0&lt;/version&gt;
+    &lt;version&gt;2.3&lt;/version&gt;
 &lt;/dependency&gt;</code></pre></div>
 <div class="force-up">
     <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-freemarker">GitHub</a>
@@ -379,7 +388,7 @@ get(&quot;/hello&quot;, (request, response) -&gt; new MyMessage(&quot;Hello Worl
 <div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
     &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
     &lt;artifactId&gt;spark-template-mustache&lt;/artifactId&gt;
-    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;version&gt;2.3&lt;/version&gt;
 &lt;/dependency&gt;</code></pre></div>
 <div class="force-up">
     <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-mustache">GitHub</a>
@@ -393,10 +402,24 @@ get(&quot;/hello&quot;, (request, response) -&gt; new MyMessage(&quot;Hello Worl
 <div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
     &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
     &lt;artifactId&gt;spark-template-velocity&lt;/artifactId&gt;
-    &lt;version&gt;2.0.0&lt;/version&gt;
+    &lt;version&gt;2.3&lt;/version&gt;
 &lt;/dependency&gt;</code></pre></div>
 <div class="force-up">
     <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-velocity">GitHub</a>
+</div>
+        
+
+<h2 id="thymeleaf" class="anchor">Thymeleaf</h2>
+<p>Renders objects to HTML using the Thymeleaf template engine.</p>
+<p>Maven dependency:</p>
+
+<div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
+    &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
+    &lt;artifactId&gt;spark-template-thymeleaf&lt;/artifactId&gt;
+    &lt;version&gt;2.3&lt;/version&gt;
+&lt;/dependency&gt;</code></pre></div>
+<div class="force-up">
+    <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-thymeleaf">GitHub</a>
 </div>
         
 
@@ -407,24 +430,38 @@ get(&quot;/hello&quot;, (request, response) -&gt; new MyMessage(&quot;Hello Worl
 <div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
     &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
     &lt;artifactId&gt;spark-template-handlebars&lt;/artifactId&gt;
-    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;version&gt;2.3&lt;/version&gt;
 &lt;/dependency&gt;</code></pre></div>
 <div class="force-up">
     <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-handlebars">GitHub</a>
 </div>
         
 
-<h2 id="jade" class="anchor">Jada</h2>
-<p>Renders objects to HTML using the Jada template engine.</p>
+<h2 id="jade" class="anchor">Jade</h2>
+<p>Renders objects to HTML using the Jade template engine.</p>
 <p>Maven dependency:</p>
 
 <div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
     &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
     &lt;artifactId&gt;spark-template-jade&lt;/artifactId&gt;
-    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;version&gt;2.3&lt;/version&gt;
 &lt;/dependency&gt;</code></pre></div>
 <div class="force-up">
     <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-jade">GitHub</a>
+</div>
+        
+
+<h2 id="jetbrick" class="anchor">Jetbrick</h2>
+<p>Renders objects to HTML using the Jetbrick template engine.</p>
+<p>Maven dependency:</p>
+
+<div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
+    &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
+    &lt;artifactId&gt;spark-template-jetbrick&lt;/artifactId&gt;
+    &lt;version&gt;2.3&lt;/version&gt;
+&lt;/dependency&gt;</code></pre></div>
+<div class="force-up">
+    <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-jetbrick">GitHub</a>
 </div>
         
 
@@ -435,7 +472,7 @@ get(&quot;/hello&quot;, (request, response) -&gt; new MyMessage(&quot;Hello Worl
 <div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
     &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
     &lt;artifactId&gt;spark-template-pebble&lt;/artifactId&gt;
-    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;version&gt;2.3&lt;/version&gt;
 &lt;/dependency&gt;</code></pre></div>
 <div class="force-up">
     <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-pebble">GitHub</a>
@@ -449,13 +486,13 @@ get(&quot;/hello&quot;, (request, response) -&gt; new MyMessage(&quot;Hello Worl
 <div class="code-snippet"><pre><code class="language-markup">&lt;dependency&gt;
     &lt;groupId&gt;com.sparkjava&lt;/groupId&gt;
     &lt;artifactId&gt;spark-template-water&lt;/artifactId&gt;
-    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;version&gt;2.3&lt;/version&gt;
 &lt;/dependency&gt;</code></pre></div>
 <div class="force-up">
     <p>Source and example on <a target="blank" href="https://github.com/perwendel/spark-template-engines/tree/master/spark-template-water">GitHub</a>
 </div>
     
-<h1 id="embedded-webserver" class="anchor">Embedded webserver</h1>
+<h1 id="embedded-webserver" class="anchor">Embedded web server</h1>
 <p>
     Standalone Spark runs on an embedded <a href="http://eclipse.org/jetty/" target="_blank">Jetty</a> web server.
 </p>
@@ -501,8 +538,48 @@ threadPool(maxThreads, minThreads, timeOutMillis);</code></pre></div>
 
 <div class="code-snippet"><pre><code class="language-java">awaitInitialization(); // Wait for server to be initialized</code></pre></div>
 
+        
+<h1 id="websockets" class="anchor">WebSockets</h1>
+<p>
+    WebSockets provide a protocol full-duplex communication channel over a single TCP connection,
+    meaning you can send message back and forth over the same connection.
+</p>
+
+<p>
+    WebSockets only works with the embedded Jetty server, and must be defined before regular HTTP routes.
+    To create a WebSocket route, you need to provide a path and a handler class:</p>
+
+
+<div class="code-snippet"><pre><code class="language-java">webSocket(&quot;/echo&quot;, EchoWebSocket.class);
+init(); // Needed if you don&#x27;t define any HTTP routes after your WebSocket routes</code></pre></div>
+
+
+<div class="code-snippet"><pre><code class="language-java">import org.eclipse.jetty.websocket.api.Session;
+import org.eclipse.jetty.websocket.api.annotations.*;
+import java.io.IOException;
+
+@WebSocket
+public class EchoWebSocket {
+    private Session session;
+
+    @OnWebSocketConnect
+    public void connected(Session session) {
+        this.session = session;
+    }
+
+    @OnWebSocketClose
+    public void closed(int statusCode, String reason) {
+        this.session = null;
+    }
+
+    @OnWebSocketMessage
+    public void message(String message) throws IOException {
+        System.out.println(&quot;Got: &quot; + message);   // Print message
+        session.getRemote().sendString(message); // and send it back
+    }
+}</code></pre></div>
     
-<h1 id="other-webserver" class="anchor">Other webserver</h1>
+<h1 id="other-webserver" class="anchor">Other web server</h1>
 <p>
     To run Spark on a web server (instead of the embedded jetty server),
     an implementation of the interface spark.servlet.SparkApplication is needed.
